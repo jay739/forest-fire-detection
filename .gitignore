@@ -117,3 +117,10 @@ Thumbs.db
 saved_model/
 log/*.npy
 log/*.pkl
+
+# Local AI-assistant scaffolding (not for the repo)
+CLAUDE.md
+.claude/
+
+# Generated dependency catalog (via /packages skill); kept local, not pushed
+docs/PACKAGES.md
