@@ -246,7 +246,7 @@ class Flame_two_stream(Module):
 
 ## pre-trained VGG
 def VGG16(classes_num):
-    model = models.vgg16(pretrained=True) 
+    model = models.vgg16(weights="DEFAULT") 
     for parameter in model.parameters():
         parameter.required_grad = False
     model.classifier = nn.Sequential(nn.Linear(512*7*7, 4096),
@@ -268,7 +268,7 @@ class Vgg_two_stream(Module):
     def __init__(self
                  ):
         super().__init__()
-        self.stream1 = models.vgg16(pretrained=True) 
+        self.stream1 = models.vgg16(weights="DEFAULT") 
         for parameter in self.stream1.parameters():
             parameter.required_grad = False
         self.stream1.classifier = nn.Sequential(nn.Linear(512*7*7, 4096),
@@ -276,7 +276,7 @@ class Vgg_two_stream(Module):
                                           nn.Dropout(0.5),
                                           nn.Linear(4096, 4096))
         
-        self.stream2 = models.vgg16(pretrained=True) 
+        self.stream2 = models.vgg16(weights="DEFAULT") 
         for parameter in self.stream2.parameters():
             parameter.required_grad = False
         self.stream2.classifier = nn.Sequential(nn.Linear(512*7*7, 4096),
@@ -306,7 +306,7 @@ class Vgg_two_stream(Module):
 
 ## pre-trained Mobilenet v2
 def Mobilenetv2(classes_num):
-    model = models.mobilenet_v2(pretrained=True) 
+    model = models.mobilenet_v2(weights="DEFAULT") 
     for parameter in model.parameters():
         parameter.required_grad = False
     model.classifier = nn.Sequential(nn.Dropout(0.2),
@@ -323,13 +323,13 @@ class Mobilenetv2_two_stream(Module):
                  ):
         super().__init__()
         
-        self.stream1 =models.mobilenet_v2(pretrained=True) 
+        self.stream1 =models.mobilenet_v2(weights="DEFAULT") 
         for parameter in self.stream1.parameters():
             parameter.required_grad = False
         self.stream1.classifier = nn.Sequential(nn.Dropout(0.2),
                                           nn.Linear(1280, 1280))
         
-        self.stream2 =models.mobilenet_v2(pretrained=True) 
+        self.stream2 =models.mobilenet_v2(weights="DEFAULT") 
         for parameter in self.stream2.parameters():
             parameter.required_grad = False
         self.stream2.classifier = nn.Sequential(nn.Dropout(0.2),
@@ -414,7 +414,7 @@ class Logistic_two_stream(nn.Module):
 
 ## pre-trained Resnet18
 def Resnet18(classes_num):
-    model = models.resnet18(pretrained=True) 
+    model = models.resnet18(weights="DEFAULT") 
     for parameter in model.parameters():
         parameter.required_grad = False
     model.fc = nn.Sequential(nn.Linear(in_features=512, out_features=classes_num))
@@ -429,12 +429,12 @@ class Resnet18_two_stream(Module):
                  ):
         super().__init__()
         
-        self.stream1= models.resnet18(pretrained=True) 
+        self.stream1= models.resnet18(weights="DEFAULT") 
         for parameter in self.stream1.parameters():
             parameter.required_grad = False
         self.stream1.fc = nn.Sequential(nn.Linear(in_features=512, out_features=256))
         
-        self.stream2= models.resnet18(pretrained=True) 
+        self.stream2= models.resnet18(weights="DEFAULT") 
         for parameter in self.stream2.parameters():
             parameter.required_grad = False
         self.stream2.fc = nn.Sequential(nn.Linear(in_features=512, out_features=256))
