@@ -36,7 +36,7 @@ from models import Logistic_two_stream,Flame_one_stream,VGG16,Vgg_two_stream,Log
 import json
 import argparse
 
-from torchmetrics.functional import precision_recall,f1_score
+from metrics import RESULT_COLUMNS, classification_metrics
 import csv
 
 import numpy as np
@@ -122,15 +122,14 @@ def test(dataloader,net,DEVICE,MODE,Model_name,name_index,log_path,correct_on_te
     if output_flag == True:
         # print(y_all_pre)
         # print(y_all_true)
-        macro_f1 = f1_score(y_all_pre.int(), y_all_true.int(), num_classes=3,average ='macro')
-        micro_f1 = f1_score(y_all_pre.int(), y_all_true.int(), average ='micro')
-        
-        macro_p,macro_r = precision_recall(y_all_pre.int(), y_all_true.int(), average='macro', num_classes=3)
-        micro_p,micro_r = precision_recall(y_all_pre.int(), y_all_true.int(), average='micro')
-        
+        m = classification_metrics(y_all_pre, y_all_true, num_classes=3)
+
+        new_file = not os.path.exists(log_path) or os.path.getsize(log_path) == 0
         with open(log_path,'a+',newline='') as f:
             csv_write = csv.writer(f)
-            data_row = [ Model_name,MODE,name_index,macro_f1.item() ,micro_f1.item()  ,macro_p.item()  ,macro_r.item()  ,micro_p.item()  ,micro_r.item()  ]
+            if new_file:
+                csv_write.writerow(RESULT_COLUMNS)
+            data_row = [Model_name, MODE, name_index] + [m[c] for c in RESULT_COLUMNS[3:]]
             csv_write.writerow(data_row)
         
     return correct / total

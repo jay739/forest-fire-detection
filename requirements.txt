@@ -1,7 +1,8 @@
-matplotlib==3.3.4
-numpy==1.19.3
-pandas==1.2.4
-Pillow==9.3.0
-torch==1.10.0+cu113
-torchmetrics==0.8.2
-torchvision==0.11.1+cu113
+# CPU wheels install from PyPI. For CUDA, follow https://pytorch.org/get-started/locally/
+matplotlib>=3.5
+numpy>=1.24
+pandas>=1.5
+Pillow>=9.3
+torch>=2.0
+torchmetrics>=1.0
+torchvision>=0.15
