@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <rect x="0" y="0" width="512" height="512" rx="123" ry="123" fill="#0B0D10"/>
+  <g id="icon">
+    <!-- flame -->
+    <path d="M 256 116 C 300 174 352 214 352 296 C 352 352 309 396 256 396 C 203 396 160 352 160 296 C 160 248 190 222 206 184 C 214 220 230 236 244 244 C 240 200 244 156 256 116 Z" fill="#EF4444"/>
+    <path d="M 256 286 C 274 310 288 326 288 344 C 288 362 274 374 256 374 C 238 374 224 362 224 344 C 224 326 238 310 256 286 Z" fill="#0B0D10"/>
+    <!-- detection box corners -->
+    <g fill="#F2F0EA">
+      <rect x="104" y="96" width="74" height="22" rx="6"/>
+      <rect x="104" y="96" width="22" height="74" rx="6"/>
+      <rect x="334" y="96" width="74" height="22" rx="6"/>
+      <rect x="386" y="96" width="22" height="74" rx="6"/>
+      <rect x="104" y="394" width="74" height="22" rx="6"/>
+      <rect x="104" y="342" width="22" height="74" rx="6"/>
+      <rect x="334" y="394" width="74" height="22" rx="6"/>
+      <rect x="386" y="342" width="22" height="74" rx="6"/>
+    </g>
+  </g>
+</svg>

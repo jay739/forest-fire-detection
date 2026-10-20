@@ -1,5 +1,9 @@
 # Wildfire Detection: Dual-Stream CNN on the FLAME Dataset
 
+<p align="center">
+  <img src="docs/logo.svg" alt="forest-fire-detection logo" width="128" />
+</p>
+
 This repository implements and benchmarks 8 Convolutional Neural Network (CNN) architectures on the **FLAME (Fire Luminosity Airborne-sensing Dataset)** for early-stage forest fire detection using aerial RGB and Thermal Infrared (IR) imagery.
 
 ## Project Overview
